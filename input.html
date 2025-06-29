@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading | ARM AREA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+          margin: 0;
+      padding: 0;
+      background: #0b0b0b;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 20px;
+      color: #ff073a;
+      display: flex;
+      align-items: center;
+    }
+    input, button {
+      padding: 8px;
+      margin: 5px;
+      background: black;
+      color: red;
+      border: 1px solid red;
+    }
+    #waLink {
+      display: none;
+      margin-top: 20px;
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .terminal {
+      position: relative;
+      background-color: #000;
+      border: 2px solid #ff0000;
+      border-radius: 8px;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+      margin: 60px auto;
+      z-index: 2;
+      box-shadow: 0 0 12px #ff0000;
+    }
+    .terminal h1 {
+      text-align: center;
+      font-size: 25px;
+      margin-bottom: 20px;
+    }
+    .terminal p {
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+    .form-group {
+      margin: 10px 0;
+    }
+    label {
+      display: block;
+      font-family: 'Share Tech Mono', monospace;
+      color: #ff3c3c;
+      margin-bottom: 5px;
+    }
+    input[type="text"], textarea {
+      width: 50%;
+      background: #000;
+      border: 1px solid #ff3c3c;
+      color: #ff3c3c;
+      padding: 5px;
+      font-family: 'Share Tech Mono', monospace;
+      text-align: left;
+    }
+    textarea {
+      resize: none;
+    }
+    button {
+      margin-top: 15px;
+    }
+    .warning {
+      color: #ff3c3c;
+      font-size: 20px;
+      margin: 15px 0;
+      line-height: 1.5;
+    }
+    #result {
+      margin-top: 20px;
+    }
+    .directives {
+      text-align: left;
+    }
+    .warning {
+    text-align: left;
+    font-size:20px;
+  </style>
+</head>
+
+<body>
+  <div class="terminal">
+    <h1>LEVEL ONE: CORE LOG VERIFICATION</h1>
+  <div class="directives">
+    <p>Masukkan hasil temuan dari log untuk verifikasi akses sistem.<br>
+    Sertakan nama operator terduga dan alasan berdasarkan aktivitas log.</p>
+</div>
+    <div class="warning">
+    <p>PERINGATAN!</p>
+     <p>Verifikasi data dengan akurat. Input tanpa validasi log akan ditolak.</p>
+    </div>
+
+    <div class="form-group">
+      <label for="pelaku">Operator:</label>
+      <input type="text" id="pelaku">
+    </div>
+
+    <div class="form-group">
+      <label for="alasan">Alasan:</label>
+      <input type="text" id="alasan">
+    </div>
+
+    <button onclick="kirimJawaban()">EXECUTE</button>
+  
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const kunjawKeywords = [
+      "shutdown", "fragmen", "D4RKS33D", "code break", "latency spike",
+      "anomaly", "HEX-02", "execute.d4rks33d", "shutdown sebelum 05:00",
+      "jejak di beberapa HEX", "fake trace", "manipulasi log",
+      "otentikasi ilegal", "akses tanpa izin", "sabotase", "payload",
+      "activity masking", "false log", "cache string D4RKS33D=1",
+      "akses HEX-02 pas sistem down", "fragmen anomali",
+      "protokol phantom_c0d3 aktif", "EXECu73_0x4AF", "0011"
+    ];
+
+    function kirimJawaban() {
+      const pelaku = document.getElementById("pelaku").value.trim();
+      const alasan = document.getElementById("alasan").value.toLowerCase();
+      const result = document.getElementById("result");
+
+      const validAlasan = kunjawKeywords.some(keyword => alasan.includes(keyword.toLowerCase()));
+
+      if (pelaku === "0011" && validAlasan) {
+        result.innerHTML = `
+          <p style="color: #00ff00;">ACCESS GRANTED — Jalur terbuka!</p>
+          <a href="https://wa.me/message/UCAECRNZPMBXM1" target="_blank" style="color: #00ff00; text-decoration: none;">[KIRIM BUKTI KE PJ]</a>
+        `;
+      } else {
+        result.innerHTML = `<p style="color: #ff3c3c;">ACCESS DENIED — Data tidak valid.</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
